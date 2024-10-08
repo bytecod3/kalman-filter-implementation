@@ -15,10 +15,14 @@ float x_accel, y_accel, z_accel;
 
 struct FilteredValues filt_vals;
 
+
 void setup() {
 	Serial.begin(115200);
 	imu.init();
-	Serial.println("IMU init OK");
+	// Serial.println("IMU init OK");
+
+	filt_vals.x_accel_filtered = 0.0;
+	filt_vals.y_accel_filtered = 0.0;
 }
 
 void loop() {

@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "BasicLinearAlgebra.h"
 #include "mpu.h"
+#include "kalman.h"
 
 /**
  * create an MPU6050 object
@@ -12,6 +13,7 @@ MPU6050 imu(0x68, 16, 1000);
 
 float x_accel, y_accel, z_accel;
 
+struct FilteredValues filt_vals;
 
 void setup() {
 	Serial.begin(115200);
@@ -23,6 +25,11 @@ void loop() {
 	x_accel = imu.readXAcceleration();
 	y_accel = imu.readYAcceleration();
 
-	Serial.println(x_accel);
+	// pass through the kalman filter
+	filt_vals = kalmanUpdate(x_accel, y_accel);
+
+	// print the filtered data
+	Serial.print(x_accel); Serial.print(",");Serial.print(filt_vals.x_accel_filtered);
+	Serial.println();
 
 }

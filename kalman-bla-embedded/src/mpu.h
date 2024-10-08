@@ -5,7 +5,7 @@
 #include "Arduino.h"
 #include <Wire.h>
 #include <math.h>
-#include "defs.h"
+//#include "defs.h"
 
 
 // divisor factors based on full scale ranges

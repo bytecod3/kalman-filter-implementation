@@ -1,0 +1,9 @@
+data = csvread('kalman-test.csv');
+x_raw = data(:,1);
+x_filtered = data(:,2);
+
+% plot 
+plot(x_raw);
+grid on;
+ylabel("x_acceleration");
+l

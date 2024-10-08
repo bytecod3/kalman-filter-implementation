@@ -12,7 +12,7 @@ Ts = 1/fs;
 %define the system 
 N =200;
 F = [1, -Ts; 0,1]; % system matrix - state
-D = [Ts, -0.5*Ts^2; 0, Ts];
+D = [Ts, -0.5*Ts^2; 0, Ts]; % system process noise matrix
 H = eye(2); % observation matrix
 Q = eye(2); % process noise covariance
 R = 1e-2*eye(2);  % measurement noise covariance
